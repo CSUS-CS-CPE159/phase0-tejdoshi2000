@@ -1,0 +1,217 @@
+23:10:18 $ make
+Done linking "build/vibeOS.dli" (with GDB enabled) at 1m.
+-[spede] ~/phase0-tejdoshi2000/02-debugging {main *%=}
+23:10:23 $ spede-target
+Launching SPEDE target to run in the background
+-[spede] ~/phase0-tejdoshi2000/02-debugging {main *%=}
+23:10:35 $ spede-run -d
+The SPEDE Target will be reset, are you sure? (y/n) y
+Resetting the SPEDE Target...
+Downloading image 'build/vibeOS.dli' to SPEDE Target via /dev/pts/2...
+File type is 'ELF'
+Total blocks to download:  0x83  (128 bytes each)
+
+Load Successful ; Code loaded at 0x0x101000 (3366 bytes/sec)
+Executing the image 'build/vibeOS.dli' on the SPEDE Target with GDB Enabled
+Launching GDB...
+Reading symbols from build/vibeOS.dli...
+Expanding full symbols from build/vibeOS.dli...
+Remote debugging using /dev/pts/2
+0x00102685 in breakpoint ()
+Temporary breakpoint 1 at 0x101206: file src/main.c, line 40.
+
+Temporary breakpoint 1, main () at src/main.c:40
+40	    char buf[128] = {0};
+SPEDE GDB$ continue
+Continuing.
+Hello, world!
+Welcome to vibeOS!
+NULL pointer!
+The buffer size is 19 bytes
+NULL pointer!
+CPE/CSC 159 for Spring/Fall 1970 will be fun!
+[Inferior 1 (Remote target) exited normally]
+SPEDE GDB$ break puts
+Breakpoint 2 at 0x10119b: file src/main.c, line 24.
+SPEDE GDB$ info break
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   0x0010119b in puts at src/main.c:24
+SPEDE GDB$ exit
+-[spede] ~/phase0-tejdoshi2000/02-debugging {main *%=}
+23:12:15 $ spede-run -d
+The SPEDE Target will be reset, are you sure? (y/n) y
+Resetting the SPEDE Target...
+Downloading image 'build/vibeOS.dli' to SPEDE Target via /dev/pts/2...
+File type is 'ELF'
+Total blocks to download:  0x83  (128 bytes each)
+
+Load Successful ; Code loaded at 0x0x101000 (3366 bytes/sec)
+Executing the image 'build/vibeOS.dli' on the SPEDE Target with GDB Enabled
+Launching GDB...
+Reading symbols from build/vibeOS.dli...
+Expanding full symbols from build/vibeOS.dli...
+Remote debugging using /dev/pts/2
+0x00102685 in breakpoint ()
+Temporary breakpoint 1 at 0x101206: file src/main.c, line 40.
+
+Temporary breakpoint 1, main () at src/main.c:40
+40	    char buf[128] = {0};
+SPEDE GDB$ break puts
+Breakpoint 2 at 0x10119b: file src/main.c, line 24.
+SPEDE GDB$ info puts
+Undefined info command: "puts".  Try "help info".
+SPEDE GDB$ info break
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   0x0010119b in puts at src/main.c:24
+SPEDE GDB$ continue
+Continuing.
+Hello, world!
+Welcome to vibeOS!
+
+Breakpoint 2, puts (str=0x104231 "Hello, World!\n") at src/main.c:24
+24	    if (str) {
+SPEDE GDB$ list
+19	/**
+20	 * Prints a string to the screen starting at 0, 0
+21	 * @param str pointer to the string to print
+22	 */
+23	void puts(char *str) {
+24	    if (str) {
+25	        printf("NULL pointer!\n");
+26	        return;
+27	    }
+28	
+SPEDE GDB$ print str
+$1 = 0x104231 "Hello, World!\n"
+SPEDE GDB$ step
+25	        printf("NULL pointer!\n");
+SPEDE GDB$ step
+NULL pointer!
+26	        return;
+SPEDE GDB$ continue
+Continuing.
+The buffer size is 19 bytes
+
+Breakpoint 2, puts (str=0x10dfc "welcome to vibeOS!\n") at src/main.c:24
+24	    if (str) {
+SPEDE GDB$ jump +3
+Continuing at 0x1011b3.
+CPE/CSC 159 for Spring/Fall 1970 will be fun!
+[Inferior 1 (Remote target) exited normally]
+SPEDE GDB$ exit
+-[spede] ~/phase0-tejdoshi2000/02-debugging {main *%=}
+23:14:40 $ make
+Done linking "build/vibeOS.dli" (with GDB enabled) at 1m.
+-[spede] ~/phase0-tejdoshi2000/02-debugging {main *%=}
+23:14:41 $ 
+-[spede] ~/phase0-tejdoshi2000/02-debugging {main *%=}
+23:14:42 $ spede-run -d
+The SPEDE Target will be reset, are you sure? (y/n) yy
+Exiting...
+![spede] ~/phase0-tejdoshi2000/02-debugging {main *%=}
+23:14:54 $ spede-run -d
+The SPEDE Target will be reset, are you sure? (y/n) y
+Resetting the SPEDE Target...
+Downloading image 'build/vibeOS.dli' to SPEDE Target via /dev/pts/2...
+File type is 'ELF'
+Total blocks to download:  0x83  (128 bytes each)
+
+Load Successful ; Code loaded at 0x0x101000 (2805 bytes/sec)
+Executing the image 'build/vibeOS.dli' on the SPEDE Target with GDB Enabled
+Launching GDB...
+Reading symbols from build/vibeOS.dli...
+Expanding full symbols from build/vibeOS.dli...
+Remote debugging using /dev/pts/2
+0x00102685 in breakpoint ()
+Temporary breakpoint 1 at 0x101206: file src/main.c, line 40.
+
+Temporary breakpoint 1, main () at src/main.c:40
+40	    char buf[128] = {0};
+SPEDE GDB$ continue
+Continuing.
+Hello, world!
+Welcome to vibeOS!
+The buffer size is 19 bytes
+CPE/CSC 159 for Spring/Fall 1970 will be fun!
+[Inferior 1 (Remote target) exited normally]
+
+
+23:18:29 $ spede-run -d
+The SPEDE Target will be reset, are you sure? (y/n) y
+Resetting the SPEDE Target...
+Downloading image 'build/vibeOS.dli' to SPEDE Target via /dev/pts/2...
+File type is 'ELF'
+Total blocks to download:  0x83  (128 bytes each)
+
+Load Successful ; Code loaded at 0x0x101000 (3366 bytes/sec)
+Executing the image 'build/vibeOS.dli' on the SPEDE Target with GDB Enabled
+Launching GDB...
+Reading symbols from build/vibeOS.dli...
+Expanding full symbols from build/vibeOS.dli...
+Remote debugging using /dev/pts/2
+0x00102685 in breakpoint ()
+Temporary breakpoint 1 at 0x101206: file src/main.c, line 40.
+
+Temporary breakpoint 1, main () at src/main.c:40
+40	    char buf[128] = {0};
+SPEDE GDB$ break strlen
+Breakpoint 2 at 0x101178: file src/main.c, line 9.
+SPEDE GDB$ continue
+Continuing.
+Hello, world!
+Welcome to vibeOS!
+
+Breakpoint 2, strlen (str=0x104231 "Hello, World!\n") at src/main.c:9
+9	    int l = 0;
+SPEDE GDB$ backtrace
+#0  strlen (str=0x104231 "Hello, World!\n") at src/main.c:9
+#1  0x001011be in puts (str=0x104231 "Hello, World!\n") at src/main.c:29
+#2  0x00101265 in main () at src/main.c:48
+SPEDE GDB$ info args
+str = 0x104231 "Hello, World!\n"
+SPEDE GDB$ info break
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   0x00101178 in strlen at src/main.c:9
+	breakpoint already hit 1 time
+SPEDE GDB$ delete 2
+SPEDE GDB$ info break
+No breakpoints or watchpoints.
+SPEDE GDB$ break main.c:52
+Breakpoint 3 at 0x1012a9: file src/main.c, line 52.
+SPEDE GDB$ break main.c:54
+Breakpoint 4 at 0x1012bb: file src/main.c, line 54.
+SPEDE GDB$ info break
+Num     Type           Disp Enb Address    What
+3       breakpoint     keep y   0x001012a9 in main at src/main.c:52
+4       breakpoint     keep y   0x001012bb in main at src/main.c:54
+SPEDE GDB$ continue
+Continuing.
+The buffer size is 19 bytes
+
+Breakpoint 3, main () at src/main.c:52
+52	    puts(buf);
+SPEDE GDB$ print buf
+$1 = "welcome to vibeOS!\n", '\000' <repeats 108 times>
+SPEDE GDB$ set buf[0] = 'W'
+SPEDE GDB$ print buf
+$2 = "Welcome to vibeOS!\n", '\000' <repeats 108 times>
+SPEDE GDB$ continue
+Continuing.
+
+Breakpoint 4, main () at src/main.c:54
+54	    printf("CPE/CSC 159 for Spring/Fall %d will be fun!\n", year);
+SPEDE GDB$ print year
+$3 = 0x7b2
+SPEDE GDB$ print /d year
+$4 = 1970
+SPEDE GDB$ set year=2025
+SPEDE GDB$ print /d year
+$5 = 8229
+SPEDE GDB$ set year=2025.
+SPEDE GDB$ print /d year
+$6 = 2025
+SPEDE GDB$ continue
+Continuing.
+CPE/CSC 159 for Spring/Fall 2025 will be fun!
+[Inferior 1 (Remote target) exited normally]
+SPEDE GDB$ 

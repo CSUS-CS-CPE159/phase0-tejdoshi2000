@@ -6,8 +6,14 @@
  * @return value indicating the length of the string
  */
 int strlen(char *str) {
-    //Implement me!
-    return 0;
+    int l = 0;
+
+    while(*str != '\0'){
+        str++;
+        l++;
+    }
+
+    return l;
 }
 
 /**
@@ -15,7 +21,7 @@ int strlen(char *str) {
  * @param str pointer to the string to print
  */
 void puts(char *str) {
-    if (str) {
+    if (!str) {
         printf("NULL pointer!\n");
         return;
     }
